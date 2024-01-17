@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// frontend/src/App.js
+
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from FastAPI backend
+    fetch('/api/data')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>React Frontend</h1>
+      <ul>
+        {data.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
