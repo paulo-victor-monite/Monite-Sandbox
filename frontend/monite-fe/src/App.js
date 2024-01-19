@@ -15,13 +15,20 @@ function App() {
 
   return (
     <div>
-      <h1>React Frontend</h1>
+      <h1>Monite Frontend</h1>
       <ul>
         {data.map(item => (
           <li key={item.id}>{item.name}</li>
         ))}
       </ul>
     </div>
+    
+    <div>
+        <h1>Monite Frontend</h1>
+        <ul>
+
+        </ul>
+      </div>
   );
 }
 
