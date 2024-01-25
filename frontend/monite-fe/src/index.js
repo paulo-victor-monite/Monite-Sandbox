@@ -1,33 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; //remove?
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// index.js
 
-import Counterparts from 'components/Counterparts';
-import Payables from 'components/Payables';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+import Counterparts from './components/Counterparts';
+import Payables from './components/Payables';
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-      </Switch>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/counterparts">Counterparts</Link>
+            </li>
+            <li>
+              <Link to="/payables">Payables</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/counterparts" component={Counterparts} />
+          <Route path="/payables" component={Payables} />
+        </Switch>
+      </div>
     </Router>
   );
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-
-
-
-
-
