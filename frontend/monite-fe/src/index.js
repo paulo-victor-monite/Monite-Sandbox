@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; // Update import statement
 
 import General from './components/General';
 import Counterparts from './components/Counterparts';
@@ -14,7 +14,7 @@ const App = () => {
       <div>
         <nav>
           <ul>
-          <li>
+            <li>
               <Link to="/">General</Link>
             </li>
             <li>
@@ -26,11 +26,11 @@ const App = () => {
           </ul>
         </nav>
 
-        <Switch>
-          <Route path="/" component={General} />
-          <Route path="/counterparts" component={Counterparts} />
-          <Route path="/payables" component={Payables} />
-        </Switch>
+        <Routes> {/* Replace Switch with Routes */}
+          <Route path="/" element={<General />} />
+          <Route path="/counterparts" element={<Counterparts />} />
+          <Route path="/payables" element={<Payables />} />
+        </Routes>
       </div>
     </Router>
   );

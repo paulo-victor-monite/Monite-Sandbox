@@ -1,5 +1,5 @@
 import { MoniteSDK } from '@monite/sdk-api';
-import { Payables, MoniteProvider } from '@monite/sdk-react';
+import { Dialog, Payables, PayableDetails, PayablesTable, MoniteProvider, ApprovalPolicies } from '@monite/sdk-react';
 
 // Define a function that retrieves access tokens
 const fetchToken = async () => {
@@ -11,9 +11,9 @@ const fetchToken = async () => {
     },
     body: JSON.stringify({
       grant_type: 'entity_user',
-      client_id: 'SECRET_CLIENT_ID',
-      client_secret: 'SECRET_CLIENT_SECRET',
-      entity_user_id: 'SECRET_ENTITY_USER_ID'
+      client_id: '496cd9b2-10e3-4f20-9465-7df9968af303',
+      client_secret: 'd8000356-1268-4bef-8982-c42852e02a94',
+      entity_user_id: '9c07382a-0a2b-41a8-961a-9630c118bc89'
     })
   });
 
@@ -23,14 +23,15 @@ const fetchToken = async () => {
 // Initialize the SDK
 const monite = new MoniteSDK({
   apiUrl: 'https://api.sandbox.monite.com/v1', // Or 'https://api.monite.com/v1' to use Production
-  entityId: 'ENTITY_ID',
+  entityId: '20521b3d-7d0c-4cb2-9021-bee7eb6855fe',
   fetchToken: fetchToken
 });
 
 function App() {
   return (
     <MoniteProvider monite={monite} locale={{ code: "en-US" }}>
-    	<Payables />
+      <ApprovalPolicies />
+      <Payables />
     </MoniteProvider>
   );
 }
